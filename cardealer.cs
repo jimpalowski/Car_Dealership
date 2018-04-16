@@ -29,7 +29,7 @@ class Car
     return _brand;
   }
 
-  public void SetMiles(int newMiles)
+  public void SetMiles(int newMiles = 5000)
   {
     _miles = newMiles;
   }
@@ -55,11 +55,10 @@ public class Program
 {
   static void Main()
   {
-
     Car toyota = new Car();
     toyota.SetModel("Camry");
     toyota.SetBrand("Toyota");
-    toyota.SetMiles(5000);
+    toyota.SetMiles();
     toyota.SetPrice();
 
     Car honda = new Car();
@@ -71,13 +70,13 @@ public class Program
     Car tesla = new Car();
     tesla.SetModel("Roadster");
     tesla.SetBrand("Tesla");
-    tesla.SetMiles(2000);
+    tesla.SetMiles(6000);
     tesla.SetPrice();
 
     Car bmw = new Car();
     bmw.SetModel("I3");
     bmw.SetBrand("BMW");
-    bmw.SetMiles(2000);
+    bmw.SetMiles(7000);
     bmw.SetPrice();
 
     Console.WriteLine("Cars Created");
@@ -96,10 +95,10 @@ public class Program
 
     List<Car> CarDealership = new List<Car> {toyota, honda, tesla, bmw};
 
-    foreach (object Car in CarDealership)
+    foreach (Car thisCar in CarDealership)
     {
-      if (Car.GetPrice() > 15000) {
-        Console.WriteLine("The " + Car.GetBrand() + " " + Car.GetModel + " has " + Car.GetMiles() + " and costs $" + Car.GetPrice());
+      if (thisCar.GetPrice() >= 15000 || thisCar.GetMiles() >= 5000) {
+        Console.WriteLine("The " + thisCar.GetBrand() + " " + thisCar.GetModel() + " has " + thisCar.GetMiles() + " miles and costs $" + thisCar.GetPrice());
       }
     }
   }
